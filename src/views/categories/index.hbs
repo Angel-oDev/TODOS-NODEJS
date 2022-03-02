@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header justify-content-center">
+        <p class="card-title">Categorías</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Color</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each categories}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>
+                            <span class="color-container" style="background-color: {{ this.color }};"></span>
+                        </td>
+                        <td class="d-flex justify-content-center">
+                            <a href="/categorias/edit/{{this.id}}" class="btn btn-primary m-1">Editar</a>
+                            <form action="/categorias/delete" method="post">
+                                <input type="hidden" name="id" value="{{this.id}}">
+                                <button type="submit" class="btn btn-danger m-1">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

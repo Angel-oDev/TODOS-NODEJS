@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="card col-6 offset-3">
+        <div class="card-header justify-content-center">
+            <p class="card-title">Agregar tarea</p>
+        </div>
+        <div class="card-body">
+            <form action="/tareas/create" method="post" novalidate class="needs-validation">
+                <div class="form-group">
+                    <label for="title">Titulo</label>
+                    <input type="text" required name="title" id="title" class="form-control" placeholder="Titulo de la tarea">
+                    <div class="invalid-feedback">
+                        Por favor ingrese un titulo
+                    </div>
+                    <div class="valid-feedback">
+                        Todo bien!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_id">Categoría</label>
+                    <select name="category_id" required id="category_id" class="form-control">
+                        <option value="">Selecciona una categoría</option>
+                        {{#each categories}}
+                        <option value="{{this.id}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor seleccione una categoría
+                    </div>
+                    <div class="valid-feedback">
+                        Todo bien!
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

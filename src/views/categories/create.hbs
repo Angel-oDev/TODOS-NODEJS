@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="card col-6 offset-3">
+        <div class="card-header justify-content-center">
+            <p class="card-title">Agregar categoría</p>
+        </div>
+        <div class="card-body">
+            <form action="/categorias/create" method="post" novalidate class="needs-validation">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" required name="name" id="name" class="form-control" placeholder="Nombre de la categoría">
+                    <div class="invalid-feedback">
+                        Por favor ingrese un nombre
+                    </div>
+                    <div class="valid-feedback">
+                        Todo bien!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="color">Color</label>
+                    <input type="color" name="color" id="color" required class="form-control">
+                    <div class="invalid-feedback">
+                        Por favor seleccione color
+                    </div>
+                    <div class="valid-feedback">
+                        Todo bien!
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
